@@ -608,15 +608,6 @@ button[aria-label]::before {
   position: sticky;
   z-index: 100;
   top: 0;
-  animation-name: scrolling-header;
-  animation-fill-mode: both;
-  animation-timeline: scroll();
-  animation-range: 6.25rem 12.5rem;
-}
-@keyframes scrolling-header {
-  to {
-    box-shadow: 0 0 1rem var(--color-dark-40);
-  }
 }
 .header__promo {
   padding-block: 1.25rem;
@@ -850,7 +841,9 @@ button[aria-label]::before {
   grid-template-columns: repeat(3, 1fr);
 }
 .metrics__item {
+  justify-content: start;
   display: flex;
+  align-items: start;
   flex-direction: column-reverse;
   row-gap: 0.625rem;
   padding: 3.125rem;
@@ -866,8 +859,15 @@ button[aria-label]::before {
     row-gap: 0;
   }
 }
-.metrics__item:first-child {
-  padding-left: 0;
+@media (width <= 47.99875rem) {
+  .metrics__item {
+    padding: 0.9375rem 1.875rem;
+  }
+}
+@media (width > 47.99875rem) {
+  .metrics__item:first-child {
+    padding-left: 0;
+  }
 }
 .metrics__item:not(:last-child) {
   border-right: var(--border);
